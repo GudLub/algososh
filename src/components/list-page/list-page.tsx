@@ -379,7 +379,8 @@ export const ListPage: React.FC = () => {
           onClick={() => deleteIndexOnClick()}
           disabled={
             currentIndex.value === "" ||
-            list.toArray().length - 1 < Number(currentIndex.value)
+            list.toArray().length - 1 < Number(currentIndex.value) ||
+            loader
               ? true
               : false
           }
