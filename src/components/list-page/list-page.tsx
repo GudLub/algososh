@@ -185,6 +185,7 @@ export const ListPage: React.FC = () => {
       const arr = list.toArray().map((value) => ({
         ...value,
         color: ElementStates.Default,
+        state: ElementStates.Default,
       })) as TString[];
       setList(list);
       setArr([...arr]);
@@ -235,6 +236,7 @@ export const ListPage: React.FC = () => {
     const defaultArray = list.toArray().map((value) => ({
       ...value,
       color: ElementStates.Default,
+      state: ElementStates.Default,
     })) as TString[];
     setList(list);
     setArr([...defaultArray]);
@@ -320,28 +322,28 @@ export const ListPage: React.FC = () => {
           type="button"
           onClick={() => addHeadOnClick()}
           isLoader={current === "Добавить в head" && loader}
-          disabled={values.value === "" ? true : false}
+          disabled={values.value === "" || loader}
         />
         <Button
           text="Добавить в tail"
           type="button"
           onClick={() => addTailOnClick()}
           isLoader={current === "Добавить в tail" && loader}
-          disabled={values.value === "" ? true : false}
+          disabled={values.value === "" || loader}
         />
         <Button
           text="Удалить из head"
           type="button"
           onClick={() => deleteHeadOnClick()}
           isLoader={current === "Удалить из head" && loader}
-          disabled={arr.length === 0}
+          disabled={arr.length === 0 || loader}
         />
         <Button
           text="Удалить из tail"
           type="button"
           onClick={() => deleteTailOnClick()}
           isLoader={current === "Удалить из tail" && loader}
-          disabled={arr.length === 0}
+          disabled={arr.length === 0 || loader}
         />
       </form>
       <form className={styles.input_box} onSubmit={onSubmit}>
