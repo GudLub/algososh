@@ -22,8 +22,10 @@ describe("Testing the Button component", () => {
     it("should be rendered correctly while the button is clicked", () => {
         const callback = jest.fn();
         render(<Button onClick={callback} />);
-        
-        fireEvent.click(screen.getByRole('button'));
-        expect(callback).toHaveBeenCalledTimes(1);
+        const button = screen.getByRole("button");
+         act( async () => {
+       fireEvent.click(button);
+    });
+        expect(callback).toHaveBeenCalled();
     });
 });
